@@ -1,0 +1,31 @@
+{
+  "name": "punkapi-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igor-Adlab/punkapi-app.git"
+  },
+  "author": "Igor Olshevsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Igor-Adlab/punkapi-app/issues"
+  },
+  "homepage": "https://github.com/Igor-Adlab/punkapi-app#readme",
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  }
+}
