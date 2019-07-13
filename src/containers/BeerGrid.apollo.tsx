@@ -56,25 +56,6 @@ export function BeerGridApollo(props: BeerGridApolloComponent.IBeerGridProps) {
     );
 }
 
-{/* <div className={css(BeerGridRedux.style.toolbar)}>
-<Toolbar
-    next={next} 
-    apply={apply}
-    loading={loading} 
-    filters={filters} 
-    pagination={pagination} 
-/>
-</div>
-{(_.isEmpty(list) && !loading) ? <Empty /> : (
-<BeerGrid
-    list={list}
-    columns={2}
-    loading={loading}
-    size={BeerCard.large}
-    spacing={BeerGrid.spacing.medium}
-/>
-)} */}
-
 BeerGridApollo.style = {
     toolbar: { marginBottom: '15px' },
 };
