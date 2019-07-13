@@ -39,9 +39,12 @@
   },
   "dependencies": {
     "antd": "^3.20.1",
+    "apollo-boost": "^0.4.3",
     "fela-plugin-prefixer": "^10.5.0",
+    "graphql": "^14.4.2",
     "lodash": "^4.17.14",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
     "react-error-boundary": "^1.2.5",
     "react-fela": "^10.5.0",

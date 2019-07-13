@@ -55,7 +55,7 @@ export class BeerService {
         return query;
     }
 
-    public static async fetch(filters: BeerFilterPair[] = [], pagination: IPagination = { page: 1, per_page: 25 }): Promise<IBeer[] | Error> {
+    public static async fetch(filters: BeerFilterPair[] = [], pagination: IPagination = { page: 1, per_page: 25 }): Promise<IBeer[]> {
         const search = this.serialize(filters, pagination);
 
         const data = await fetch(this.ENDPOINT + `?${search}`)
