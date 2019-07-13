@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
+    "storybook": "start-storybook",
     "build": "parcel build index.html"
   },
   "repository": {
@@ -19,13 +20,32 @@
   },
   "homepage": "https://github.com/Igor-Adlab/punkapi-app#readme",
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.5.2",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "@types/jest": "^24.0.15",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^12.6.2",
+    "@types/react-router-dom": "^4.3.4",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "jest": "^24.8.0",
+    "less": "^3.9.0",
     "parcel-bundler": "^1.12.3",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "antd": "^3.20.1",
+    "fela-plugin-prefixer": "^10.5.0",
+    "lodash": "^4.17.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-error-boundary": "^1.2.5",
+    "react-fela": "^10.5.0",
+    "react-router-dom": "^5.0.1",
+    "rxjs": "^6.5.2",
+    "storybook-addon-props-fela": "^1.0.3"
   }
 }
