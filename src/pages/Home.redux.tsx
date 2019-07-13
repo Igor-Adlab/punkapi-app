@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Page } from '../components/Page';
 import { BeerGridRedux } from '../containers/BeerGrid.redux';
 
-declare namespace HomeComponent {
+declare namespace HomeReduxComponent {
     export interface IHomeProps {}
 }
 
-export function Home(props: HomeComponent.IHomeProps) {
+export function HomeRedux(props: HomeReduxComponent.IHomeProps) {
     return (
         <Page title="Favorite beer">
             <BeerGridRedux />
