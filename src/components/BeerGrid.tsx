@@ -1,16 +1,17 @@
+import { IStyle } from 'fela';
 import * as React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Spin } from 'antd';
 
 import { Grid } from './Grid';
 import { IBeer } from '../interfaces/beer.interface';
 import { BeerCard } from './BeerCard';
 import { useFela } from 'react-fela';
-import { IStyle } from 'fela';
 
 declare namespace BeerGridComponent {
     export interface IBeerGridProps {
         size: number;
         list: IBeer[];
+        loading?: boolean;
         columns?: number;
         spacing?: number;
     }
@@ -18,16 +19,18 @@ declare namespace BeerGridComponent {
 
 export function BeerGrid(props: BeerGridComponent.IBeerGridProps) {
     const { css } = useFela(props);
-    const { list, columns = 2, size, spacing = BeerGrid.spacing.medium } = props;
+    const { loading = false, list, columns = 2, size, spacing = BeerGrid.spacing.medium } = props;
     return (
-        <div className={css(BeerGrid.styles.grid as IStyle)}>
-            <Grid 
-                list={list}
-                config={{ columns }}
-                row={BeerGrid.Row({ spacing })}
-                element={BeerGrid.Column({ columns, size })}
-            />
-        </div>
+        <Spin spinning={loading}>
+            <div className={css(BeerGrid.styles.grid as IStyle)}>
+                <Grid 
+                    list={list}
+                    config={{ columns }}
+                    row={BeerGrid.Row({ spacing })}
+                    element={BeerGrid.Column({ columns, size })}
+                />
+            </div>
+        </Spin>
     );
 }
 
