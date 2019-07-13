@@ -7,11 +7,12 @@ import { Query } from 'react-apollo';
 import { useSelector, ReactReduxContext } from 'react-redux';
 
 import { Toolbar } from '../components/Toolbar';
+import { ErrorView } from '../components/Error';
+import { BEERS_QUERY } from '../graphql/queries';
 import { BeerCard } from '../components/BeerCard';
 import { BeerGrid } from '../components/BeerGrid';
 import { applyBeerFilter } from '../redux/actions';
 import { BeerFilterPair, IPagination } from '../interfaces/common.interfaces';
-import { BEERS_QUERY } from '../graphql/queries';
 
 declare namespace BeerGridApolloComponent {
     export interface IBeerGridProps {
@@ -29,7 +30,7 @@ export function BeerGridApollo(props: BeerGridApolloComponent.IBeerGridProps) {
     return (
         <div>
             <Query variables={viewState} query={BEERS_QUERY}>
-                {({ data, loading }) => (
+                {({ data, loading, error, refetch }) => !error ? (
                     <React.Fragment>
                         <div className={css(BeerGridApollo.style.toolbar)}>
                             <Toolbar
@@ -50,7 +51,7 @@ export function BeerGridApollo(props: BeerGridApolloComponent.IBeerGridProps) {
                             />
                         )}
                     </React.Fragment>
-                )}
+                ) : <ErrorView retry={() => refetch({ options: { fetchPolicy: 'no-cache' } })} error={error} />}
             </Query>
         </div>
     );

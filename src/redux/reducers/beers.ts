@@ -3,7 +3,7 @@ import { createReducer } from 'redux-create-reducer';
 import { BEER_LOADING, BEER_LIST_ERROR, BEER_APPLY_FILTERS, BEER_LIST_RESPONSE } from '../actions';
 
 const loading = createReducer(false, {
-    [BEER_LIST_ERROR]: () => true,
+    [BEER_LIST_ERROR]: () => false,
     [BEER_APPLY_FILTERS]: () => true,
     [BEER_LIST_RESPONSE]: () => false,
     [BEER_LOADING]: (state, action) => action.state,
@@ -13,6 +13,11 @@ const list = createReducer([], {
     [BEER_LIST_ERROR]: () => [],
     [BEER_LIST_RESPONSE]: (state, action) => action.list,
     // [BEER_LIST_RESPONSE]: (state, action) => action.list.length > 0 ? action.list : state,
+});
+
+const error = createReducer([], {
+    [BEER_LIST_RESPONSE]: (state, action) => null,
+    [BEER_LIST_ERROR]: (state, action) => action.error,
 });
 
 const next = createReducer(false, {
@@ -29,5 +34,5 @@ const pagination = createReducer({ page: 1, per_page: 5 }, {
 });
 
 export const beers = combineReducers({
-    loading, list, filters, pagination, next,
+    loading, list, filters, pagination, next, error,
 });

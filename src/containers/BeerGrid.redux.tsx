@@ -1,15 +1,16 @@
 import * as _ from 'lodash';
-import { Button, Icon } from 'antd';
+import { Empty } from 'antd';
 import * as React from 'react';
+import { Button, Icon } from 'antd';
+import { useFela } from 'react-fela';
 import { useSelector, ReactReduxContext } from 'react-redux';
 
+import { Toolbar } from '../components/Toolbar';
 import { BeerCard } from '../components/BeerCard';
 import { BeerGrid } from '../components/BeerGrid';
-import { BeerFilterPair, IPagination } from '../interfaces/common.interfaces';
 import { applyBeerFilter } from '../redux/actions';
-import { Empty } from 'antd';
-import { Toolbar } from '../components/Toolbar';
-import { useFela } from 'react-fela';
+import { BeerFilterPair, IPagination } from '../interfaces/common.interfaces';
+import { ErrorView } from '../components/Error';
 
 declare namespace BeerGridReduxComponent {
     export interface IBeerGridProps {
@@ -22,14 +23,22 @@ declare namespace BeerGridReduxComponent {
 export function BeerGridRedux(props: BeerGridReduxComponent.IBeerGridProps) {
     const { css } = useFela(props);
     const { store } = React.useContext(ReactReduxContext);
-    const { list, loading, pagination, filters, next } = useSelector(state => state.beers);
+    const { list, loading, pagination, filters, next, error } = useSelector(state => state.beers);
+
 
     React.useEffect(() => {
         store.dispatch(applyBeerFilter(filters, pagination));
-    }, [filters, pagination])
+    }, [filters, pagination]);
+
+    const retry = () => 
+        store.dispatch(applyBeerFilter(filters, pagination));
 
     const apply = view => 
         store.dispatch(applyBeerFilter(view.filters, view.pagination));
+
+    if (error) {
+        return <ErrorView retry={retry} error={error} />;
+    }
 
     return (
         <div>

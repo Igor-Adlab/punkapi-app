@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
     "start": "parcel index.html",
     "storybook": "start-storybook",
     "build": "parcel build index.html"
@@ -18,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/Igor-Adlab/punkapi-app/issues"
   },
-  "homepage": "https://github.com/Igor-Adlab/punkapi-app#readme",
+  "homepage": "https://igor-adlab.github.io/punkapi-app",
   "devDependencies": {
     "@babel/plugin-transform-typescript": "^7.5.2",
     "@storybook/addon-info": "^5.1.9",

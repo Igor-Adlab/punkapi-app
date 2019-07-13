@@ -56,11 +56,13 @@ export class BeerService {
     }
 
     public static async fetch(filters: BeerFilterPair[] = [], pagination: IPagination = { page: 1, per_page: 25 }): Promise<IBeer[]> {
-        const search = this.serialize(filters, pagination);
+        try {
+            const search = this.serialize(filters, pagination);
 
-        const data = await fetch(this.ENDPOINT + `?${search}`)
-            .then<IBeer[]>(response => response.json());
+            const data = await fetch(this.ENDPOINT + `?${search}`)
+                .then<IBeer[]>(response => response.json());
 
-        return data;
+            return data;
+        } catch (e) { throw new Error(e); }
     }
 }
